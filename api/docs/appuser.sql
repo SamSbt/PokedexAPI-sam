@@ -1,0 +1,10 @@
+insert into appuser (id_appuser, username, email, password, is_valid, is_online, is_deleted) values (1, 'tloddy0', 'dgraffin0@cmu.edu', 'tC12M$*19D638~8L', true, false, true);
+insert into appuser (id_appuser, username, email, password, is_valid, is_online, is_deleted) values (2, 'hzamudio1', 'gpentin1@elpais.com', 'jX35TY@m!!uin', true, true, false);
+insert into appuser (id_appuser, username, email, password, is_valid, is_online, is_deleted) values (3, 'blanda2', 'atorpie2@networkadvertising.org', 'fM9,HpZ63j', true, true, false);
+insert into appuser (id_appuser, username, email, password, is_valid, is_online, is_deleted) values (4, 'aromeo3', 'jhaggett3@yahoo.com', 'lC0O$XLRj#)', false, true, true);
+insert into appuser (id_appuser, username, email, password, is_valid, is_online, is_deleted) values (5, 'jstudart4', 'cronan4@hugedomains.com', 'jG3y4qFe', false, true, false);
+insert into appuser (id_appuser, username, email, password, is_valid, is_online, is_deleted) values (6, 'pjenyns5', 'beddowis5@cisco.com', 'qK1OvXFJ', false, false, false);
+insert into appuser (id_appuser, username, email, password, is_valid, is_online, is_deleted) values (7, 'krickcord6', 'wlouw6@psu.edu', 'xS95ybf0jD@ukg', true, false, true);
+insert into appuser (id_appuser, username, email, password, is_valid, is_online, is_deleted) values (8, 'kready7', 'cforo7@slideshare.net', 'cE5~Zq?I<r(', false, false, false);
+insert into appuser (id_appuser, username, email, password, is_valid, is_online, is_deleted) values (9, 'kpolin8', 'mtroucher8@un.org', 'xW9zA$MNxenwwhA', false, false, false);
+insert into appuser (id_appuser, username, email, password, is_valid, is_online, is_deleted) values (10, 'tkatte9', 'chardinge9@sciencedaily.com', 'rR0s@GD!oT', true, false, true);

@@ -1,0 +1,10 @@
+insert into types (id, name) values (1, 'Aquamarine');
+insert into types (id, name) values (2, 'Aquamarine');
+insert into types (id, name) values (3, 'Pink');
+insert into types (id, name) values (4, 'Puce');
+insert into types (id, name) values (5, 'Khaki');
+insert into types (id, name) values (6, 'Crimson');
+insert into types (id, name) values (7, 'Violet');
+insert into types (id, name) values (8, 'Goldenrod');
+insert into types (id, name) values (9, 'Purple');
+insert into types (id, name) values (10, 'Crimson');
