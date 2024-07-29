@@ -4,7 +4,7 @@
 }
 
 // Form size input
-.formSearch {
+.form-search {
 	.form-control {
 		width: 200px;
 		background-color: #000;
@@ -36,7 +36,7 @@ input::placeholder {
 }
 
 // animation logo
-.logoAnimation {
+.logo-animation {
 	img:hover {
     animation: shaking 0.4s infinite;
     visibility: visible;

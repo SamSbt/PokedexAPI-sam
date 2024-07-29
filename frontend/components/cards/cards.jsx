@@ -19,6 +19,7 @@ function Cards(props) {
 		showCreatedAt = true,
 		showUpdatedAt = true,
 	} = props;
+
 	return (
 		<>
 			<Card
@@ -46,9 +47,7 @@ function Cards(props) {
 					)}
 					{showHeight && <Card.Text>Taille : {pokemon.height}</Card.Text>}
 					{showWeight && <Card.Text>Poids : {pokemon.weight}</Card.Text>}
-					{showTypes && (
-						<Card.Text>Type(s) : {types.join(", ")}</Card.Text>
-					)}
+					{showTypes && <Card.Text>Type(s) : {types.join(", ")}</Card.Text>}
 					{showStatus && (
 						<Card.Text>{pokemon.is_deleted ? "Deleted" : "Active"}</Card.Text>
 					)}
@@ -69,11 +68,11 @@ Cards.propTypes = {
 		Id_pokemon: PropTypes.number.isRequired,
 		name: PropTypes.string,
 		sound: PropTypes.string,
-		height: PropTypes.number.isRequired,
-		weight: PropTypes.number,
+		height: PropTypes.string,
+		weight: PropTypes.string,
 		summary: PropTypes.string,
 		img_src: PropTypes.string,
-		is_deleted: PropTypes.bool,
+		is_deleted: PropTypes.number,
 		created_at: PropTypes.string,
 		updated_at: PropTypes.string,
 	}).isRequired,

@@ -1,14 +1,14 @@
-@import '../../../node_modules/bootstrap/scss/bootstrap.scss';
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
 
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	text-decoration: none;
-	list-style: none;
-}
+// *,
+// *::before,
+// *::after {
+// 	box-sizing: border-box;
+// 	margin: 0;
+// 	padding: 0;
+// 	text-decoration: none;
+// 	list-style: none;
+// }
 
 body {
 	background-color: #000000;
@@ -20,11 +20,11 @@ body {
 	font-size: 0.9rem;
 }
 
-html,
-body {
-	width: 100%;
-	height: 100%;
-}
+// html,
+// body {
+// 	width: 100%;
+// 	height: 100%;
+// }
 .wrapper {
 	display: flex;
 	flex-direction: column;
