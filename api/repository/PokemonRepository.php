@@ -2,7 +2,6 @@
 
 namespace Repository;
 
-use Entity\Pokemon;
 use PDO;
 
 class PokemonRepository extends BaseRepository
@@ -11,9 +10,9 @@ class PokemonRepository extends BaseRepository
   {
     $query = "
             SELECT p.Id_pokemon, p.name, p.sound, p.height, p.weight, p.summary, p.img_src, p.is_deleted, p.created_at, p.updated_at, t.name as type_name
-            FROM Pokemon p
-            LEFT JOIN Types_Pokemon tp ON p.Id_pokemon = tp.Id_pokemon
-            LEFT JOIN Types t ON tp.Id_types = t.Id_types
+            FROM pokemon p
+            LEFT JOIN types_pokemon tp ON p.Id_pokemon = tp.Id_pokemon
+            LEFT JOIN types t ON tp.Id_types = t.Id_types
         ";
 
     $statement = $this->connect()->prepare($query);

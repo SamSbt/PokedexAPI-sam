@@ -1,6 +1,8 @@
-import { Container, Image, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import Header from "../components/header/header";
 import Cards from "../components/cards/cards";
 import { useEffect, useState } from "react";
+
 
 const Homepage = () => {
 	const [data, setData] = useState([]);
@@ -9,7 +11,7 @@ const Homepage = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const url = "http://pokedex-api.loc/pokemon";
+				const url = "http://pokedexapi-sam.loc/pokemon";
 				const response = await fetch(url);
 				if (!response.ok) {
 					throw new Error("Erreur de réseau");
@@ -65,15 +67,7 @@ const Homepage = () => {
 	return (
 		<>
 			<Container fluid className="px-5">
-				<div className="mt-5 d-flex flex-column justify-content-center align-items-center w-100">
-					<Image
-						alt="Image du pokedex"
-						src="/src/assets/img/pokedexlogo.png"
-						width="100"
-						className="mb-2"
-					/>
-					<h1 className="mt-3 text-center">Attrapez les touuuuus</h1>
-				</div>
+				<Header />
 
 				{loading && (
 					<p className="col-12 text-center mt-5">Chargement des données...</p>

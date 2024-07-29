@@ -60,7 +60,7 @@ class BaseRepository
   {
     return "Entity\\" . $this->getBaseClassName();
   }
-  public function getAllPokemons(): array
+  public function getAll(): array
   {
     $tableName = $this->getTableName();
     $queryResponse = $this->preparedQuery("SELECT * FROM " . $tableName);
@@ -69,7 +69,7 @@ class BaseRepository
     return $entities;
   }
   // FETCH_PROPS_LATE permet que constructeur soit exécuté avant affectation des valeurs en DB
-  public function getPokemonById($id): BaseEntity | null
+  public function getOneById($id): BaseEntity | null
   {
     $tableName = $this->getTableName();
     $entityClassName = $this->getEntityClassName();
@@ -99,7 +99,7 @@ class BaseRepository
     $queryResponse = $this->preparedQuery($sql, $params);
     if ($queryResponse->result && $queryResponse->statement->rowCount() == 1) {
       $lastInsertId = self::$connection->lastInsertId();
-      $entity = $this->getPokemonById($lastInsertId);
+      $entity = $this->getOneById($lastInsertId);
       return $entity;
     }
     return false;
@@ -121,7 +121,7 @@ class BaseRepository
     $sql = "UPDATE $tableName SET $set WHERE $where";
     $resp = $this->preparedQuery($sql, $params);
     if ($resp->result && $resp->statement->rowCount() <= 1) {
-      $entity = $this->getPokemonById($id);
+      $entity = $this->getOneById($id);
       return $entity;
     }
     return false;
@@ -133,7 +133,7 @@ class BaseRepository
     $sql = "DELETE FROM $tableName WHERE $where";
     $resp = $this->preparedQuery($sql, [$id]);
     if ($resp->result && $resp->statement->rowCount() <= 1) {
-      $entity = $this->getPokemonById($id);
+      $entity = $this->getOneById($id);
       return !isset($entity);
     }
     return false;

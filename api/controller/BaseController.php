@@ -35,10 +35,10 @@ class BaseController
     $repositoryClassName = $this->getRepositoryClassName();
     $repository = new $repositoryClassName();
     if ($this->id <= 0) {
-      $entities = $repository->getAllPokemons();
+      $entities = $repository->getAll();
       return $entities;
     }
-    $entity = $repository->getPokemonById($this->id);
+    $entity = $repository->getOneById($this->id);
     return $entity;
   }
   protected function post(): array
