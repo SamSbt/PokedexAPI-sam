@@ -1,17 +1,14 @@
 import PropTypes from "prop-types";
-
 import { Button, Row } from "react-bootstrap";
 import "./tag.scss";
 
-function Tag(props) {
-	const { types } = props;
+function Tag({ types }) {
+	const typeClass = `type-${types.name}`;
 
 	return (
 		<>
-			<Row className="btn-style justify-content-center">
-				<Button variant="secondary" className="mx-3">
-					{types.name}
-				</Button>
+			<Row className="btn-style justify-content-center text-center">
+				<Button className={`mx-3 px-0 btn btn-type-1 ${typeClass}`}>{types.name}</Button>
 			</Row>
 		</>
 	);
@@ -20,8 +17,8 @@ function Tag(props) {
 Tag.propTypes = {
 	types: PropTypes.shape({
 		Id_types: PropTypes.number.isRequired,
-		name: PropTypes.string,
-	}),
+		name: PropTypes.string.isRequired,
+	}).isRequired,
 };
 
 export default Tag;

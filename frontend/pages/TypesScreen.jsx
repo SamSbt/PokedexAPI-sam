@@ -1,4 +1,4 @@
-import { Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import Header from "../components/header/header";
 import Tag from "../components/tag/tag";
 import { useEffect, useState } from "react";
@@ -16,14 +16,7 @@ const TypesScreen = () => {
 					throw new Error("Erreur de réseau");
 				}
 				const result = await response.json();
-				// console.log("API response:", result);
-				// const lastCreatedPokemons = result
-				// 	.sort((a, b) => {
-				// 		return new Date(b.created_at) - new Date(a.created_at);
-				// 	})
-				// 	.slice(0, 12);
-				// console.log(lastCreatedPokemons);
-				// setData(lastCreatedPokemons || []);
+				setData(result || {});
 			} catch (error) {
 				console.log("Fetch error:", error);
 			} finally {
@@ -36,14 +29,8 @@ const TypesScreen = () => {
 
 	const tagbutton = data.map((types) => (
 		<Col
-			xs={12}
-			sm={6}
-			md={4}
-			lg={3}
-			xl={3}
-			xxl={2}
 			key={types.Id_types}
-			className="d-flex justify-content-evenly"
+			className="d-flex justify-content-center align-items-center my-3"
 		>
 			<Tag types={types} name={types.Id_types} />
 		</Col>
@@ -58,7 +45,7 @@ const TypesScreen = () => {
 					<p className="col-12 text-center mt-5">Chargement des données...</p>
 				)}
 				{data.length > 0 ? (
-					<Row className="">{tagbutton}</Row>
+					<Row className="m-4">{tagbutton}</Row>
 				) : (
 					!loading && (
 						<p className="col-12 text-center mt-5">Aucun tag trouvé.</p>

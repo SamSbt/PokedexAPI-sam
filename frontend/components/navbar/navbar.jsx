@@ -5,7 +5,6 @@ import {
 	Image,
 	Nav,
 	Navbar,
-	NavDropdown,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useState } from "react";

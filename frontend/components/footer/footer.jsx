@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Contact from "../contact/contact";
 import { useState } from "react";
 
+import "../navbar/navbar.scss";
 
 function Footer() {
   const [showContact, setShowContact] = useState(false);
@@ -52,13 +53,12 @@ function Footer() {
 							</Row>
 						</Col>
 						<Col md={3} className="d-flex justify-content-end">
-							<Link
-								as={Button}
-								className="nav-link my-3 p-2 border border-1 border-light rounded-2"
+							<Button
+								className="my-3 p-2 btn btn-outline-light bg-dark"
 								onClick={handleShowContact}
 							>
 								Contact
-							</Link>
+							</Button>
 						</Col>
 					</Row>
 				</Container>
