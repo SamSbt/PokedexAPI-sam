@@ -1,0 +1,16 @@
+// btn color
+.customButton {
+	.btn {
+		&.btn-outline-light {
+			&.bg-dark {
+				font-size: 0.9rem;
+				&:hover,
+				&:focus {
+					background-color: #495057 !important;
+					color: #fff !important; // Changement de la couleur du texte au survol
+				}
+			}
+		}
+	}
+}	
+

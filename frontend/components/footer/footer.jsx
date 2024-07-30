@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Contact from "../contact/contact";
 import { useState } from "react";
 
-import "../navbar/navbar.scss";
+import FooterSCSS from "../footer/footer.module.scss";
 
 function Footer() {
   const [showContact, setShowContact] = useState(false);
@@ -13,7 +13,7 @@ function Footer() {
   
 	return (
 		<>
-			<footer className="bg-dark">
+			<footer className="bg-dark mt-4">
 				<Container fluid className="px-5">
 					<Row>
 						<Col md={3}></Col>

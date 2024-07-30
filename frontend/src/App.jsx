@@ -2,10 +2,11 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import { Container } from "react-bootstrap";
 
 import NavbarTop from "../components/navbar/navbar";
+import Footer from "../components/footer/footer";
 import Routing from "./Routes";
 
 import "./assets/styles/App.scss";
-import Footer from "../components/footer/footer";
+
 
 function App() {
 	return (

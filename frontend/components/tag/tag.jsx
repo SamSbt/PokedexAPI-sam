@@ -7,8 +7,10 @@ function Tag({ types }) {
 
 	return (
 		<>
-			<Row className="btn-style justify-content-center text-center">
-				<Button className={`mx-3 px-0 btn btn-type-1 ${typeClass}`}>{types.name}</Button>
+			<Row className="justify-content-center text-center btnStyle">
+				<Button className={`mx-3 px-0 btn btn-type-1 ${typeClass}`}>
+					{types.name}
+				</Button>
 			</Row>
 		</>
 	);

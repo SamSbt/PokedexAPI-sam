@@ -1,60 +1,23 @@
 @import "./Custom.scss";
+//btn footer et navbar
+.btn {
+	&.btn-outline-light {
+		&.bg-dark {
+			font-size: 0.9rem;
 
-// *,
-// *::before,
-// *::after {
-// 	box-sizing: border-box;
-// 	margin: 0;
-// 	padding: 0;
-// 	text-decoration: none;
-// 	list-style: none;
-// }
-
-body {
-	background-color: #000000;
-	color: #fff;
-	// font style REGULAR
-	font-family: "Poppins", sans-serif;
-	font-weight: 400;
-	font-style: normal;
-	font-size: 0.9rem;
+			&:hover,
+			&:focus {
+				background-color: #495057 !important;
+				color: #fff; // Changement de la couleur du texte au survol
+			}
+		}
+	}
 }
 
-.wrapper {
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
-}
-main {
-	flex: 1;
-}
-
-// font logo
-.special-elite-regular {
-	font-family: "Special Elite", system-ui;
-	font-weight: 400;
-	font-style: normal;
-}
-// font body LIGHT
-.poppins-light {
+// placeholder
+input::placeholder {
 	font-family: "Poppins", sans-serif;
 	font-weight: 300;
-	font-style: normal;
+	font-size: 0.8rem;
+	color: #fff;
 }
-// font body BOLD
-.poppins-bold {
-	font-family: "Poppins", sans-serif;
-	font-weight: 700;
-	font-style: normal;
-}
-
-/* scrollbar */
-/* ::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: #212529;
-}
-::-webkit-scrollbar-thumb {
-    background: #747272;
-} */
