@@ -5,7 +5,7 @@ import NavbarTop from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
 import Routing from "./Routes";
 
-import "./assets/styles/App.scss";
+
 
 
 function App() {

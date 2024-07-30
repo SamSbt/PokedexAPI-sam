@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import Contact from "../contact/contact";
 import { useState } from "react";
 
-import FooterSCSS from "../footer/footer.module.scss";
-
 function Footer() {
   const [showContact, setShowContact] = useState(false);
 
