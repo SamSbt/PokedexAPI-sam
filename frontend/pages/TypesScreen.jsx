@@ -1,5 +1,4 @@
 import { Col, Container, Row } from "react-bootstrap";
-import Header from "../components/header/header";
 import Tag from "../components/tag/tag";
 import { useEffect, useState } from "react";
 
@@ -39,8 +38,6 @@ const TypesScreen = () => {
 	return (
 		<>
 			<Container fluid className="px-5">
-				<Header />
-
 				{loading && (
 					<p className="col-12 text-center mt-5">Chargement des données...</p>
 				)}

@@ -27,7 +27,7 @@ function NavbarTop() {
 			<Navbar expand="lg" bg="dark" variant="dark" data-bs-theme="dark">
 				<Container fluid className="px-5">
 					<Navbar.Brand
-						className="d-flex align-items-center logo-animation"
+						className="d-flex align-items-center logoAnimation"
 						as={Link}
 						to="/"
 					>
