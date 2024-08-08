@@ -1,7 +1,85 @@
+@import "../../src/assets/styles/Custom.scss";
+
 // taille des tags
 .btnStyle {
 	.btn {
 		width: 5rem;
 		
 	}
+}
+
+// Ajout des styles dynamiques pour chaque type
+.type-1 {
+	background-color: $type-1 !important;
+	border-color: $type-1 !important;
+}
+
+.type-2 {
+	background-color: $type-2 !important;
+	border-color: $type-2 !important;
+}
+
+.type-3 {
+	background-color: $type-3 !important;
+	border-color: $type-3 !important;
+}
+
+.type-4 {
+	background-color: $type-4 !important;
+	border-color: $type-4 !important;
+}
+
+.type-5 {
+	background-color: $type-5 !important;
+	border-color: $type-5 !important;
+}
+
+.type-6 {
+	background-color: $type-6 !important;
+	border-color: $type-6 !important;
+}
+
+.type-7 {
+	background-color: $type-7 !important;
+	border-color: $type-7 !important;
+}
+
+.type-8 {
+	background-color: $type-8 !important;
+	border-color: $type-8 !important;
+}
+
+.type-9 {
+	background-color: $type-9 !important;
+	border-color: $type-9 !important;
+}
+
+.type-10 {
+	background-color: $type-10 !important;
+	border-color: $type-10 !important;
+}
+
+.type-11 {
+	background-color: $type-11 !important;
+	border-color: $type-11 !important;
+}
+
+.type-12 {
+	background-color: $type-12 !important;
+	border-color: $type-12 !important;
+}
+
+.type-13 {
+	background-color: $type-13 !important;
+	border-color: $type-13 !important;
+}
+
+.type-14 {
+	background-color: $type-14 !important;
+	border-color: $type-14 !important;
+}
+
+.type-15 {
+	background-color: $type-15 !important;
+	border-color: $type-15 !important;
 }

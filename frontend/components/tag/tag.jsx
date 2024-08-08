@@ -3,14 +3,12 @@ import { Button, Row } from "react-bootstrap";
 import "./tag.scss";
 
 function Tag({ types }) {
-	const typeClass = `type-${types.name}`;
+	const typeClass = `type-${types.Id_types}`;
 
 	return (
 		<>
 			<Row className="justify-content-center text-center btnStyle">
-				<Button className={`mx-3 px-0 btn btn-type-1 ${typeClass}`}>
-					{types.name}
-				</Button>
+				<Button className={`mx-3 px-0 text-black btn ${typeClass}`}>{types.name}</Button>
 			</Row>
 		</>
 	);
