@@ -20,6 +20,15 @@ function Cards(props) {
 		showUpdatedAt = true,
 	} = props;
 
+
+
+	// convertir types en tableau si ce n'en est pas déjà un
+	const typesArray = Array.isArray(types)
+		? types
+		: typeof types === "string"
+		? types.split(",").map((type) => type.trim())
+		: [];
+
 	return (
 		<>
 			<Card
@@ -47,7 +56,9 @@ function Cards(props) {
 					)}
 					{showHeight && <Card.Text>Taille : {pokemon.height}</Card.Text>}
 					{showWeight && <Card.Text>Poids : {pokemon.weight}</Card.Text>}
-					{showTypes && <Card.Text>Type(s) : {types.join(", ")}</Card.Text>}
+					{showTypes && (
+						<Card.Text>Type(s) : {typesArray.join(", ")}</Card.Text>
+					)}
 					{showStatus && (
 						<Card.Text>{pokemon.is_deleted ? "Deleted" : "Active"}</Card.Text>
 					)}
@@ -68,15 +79,18 @@ Cards.propTypes = {
 		Id_pokemon: PropTypes.number.isRequired,
 		name: PropTypes.string,
 		sound: PropTypes.string,
-		height: PropTypes.string,
-		weight: PropTypes.string,
+		height: PropTypes.number,
+		weight: PropTypes.number,
 		summary: PropTypes.string,
 		img_src: PropTypes.string,
-		is_deleted: PropTypes.number,
+		is_deleted: PropTypes.bool,
 		created_at: PropTypes.string,
 		updated_at: PropTypes.string,
 	}).isRequired,
-	types: PropTypes.arrayOf(PropTypes.string), // Ajout de types ici pour valider la prop types
+	types: PropTypes.oneOfType([
+		PropTypes.arrayOf(PropTypes.string),
+		PropTypes.string,
+	]).isRequired, // types peut être un tableau ou une chaîne de caractères
 	showSound: PropTypes.bool,
 	showSummary: PropTypes.bool,
 	showHeight: PropTypes.bool,

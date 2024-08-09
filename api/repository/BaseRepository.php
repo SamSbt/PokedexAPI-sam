@@ -60,24 +60,33 @@ class BaseRepository
   {
     return "Entity\\" . $this->getBaseClassName();
   }
+
+//surcharge des requêtes SQL dans les sous-classes
+protected function getBaseSelectQuery(): string
+    {
+        $tableName = $this->getTableName();
+        return "SELECT * FROM $tableName";
+    }
+
   public function getAll(): array
   {
-    $tableName = $this->getTableName();
-    $queryResponse = $this->preparedQuery("SELECT * FROM " . $tableName);
+    $sql = $this->getBaseSelectQuery();
+    $queryResponse = $this->preparedQuery($sql);
     $entities = $queryResponse->statement->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, $this->getEntityClassName());
     // var_dump($entities);
     return $entities;
   }
   // FETCH_PROPS_LATE permet que constructeur soit exécuté avant affectation des valeurs en DB
+  // BaseEntity | null PHP8+ ou ?BaseEntity (PHP 7.1+) - l'un ou l'autre, only dans le cas ou p ê null
   public function getOneById($id): BaseEntity | null
   {
-    $tableName = $this->getTableName();
-    $entityClassName = $this->getEntityClassName();
-    $queryResponse = $this->preparedQuery("SELECT * FROM $tableName WHERE id_$tableName = ?", [$id]);
+    $sql = $this->getBaseSelectQuery() . " WHERE id_{$this->getTableName()} = ?";
+    $queryResponse = $this->preparedQuery($sql, [$id]);
     $assocArray = $queryResponse->statement->fetch(PDO::FETCH_ASSOC);
     if (!$assocArray) {
       return null;
     }
+    $entityClassName = $this->getEntityClassName();
     $entity = new $entityClassName($assocArray);
     return $entity;
   }

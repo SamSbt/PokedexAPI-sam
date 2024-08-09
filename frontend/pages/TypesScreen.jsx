@@ -29,7 +29,6 @@ const TypesScreen = () => {
 	const tagbutton = data.map((types) => (
 		<Col
 			key={types.Id_types}
-			className="d-flex justify-content-center align-items-center my-3"
 		>
 			<Tag types={types} name={types.Id_types} />
 		</Col>
@@ -37,12 +36,12 @@ const TypesScreen = () => {
 
 	return (
 		<>
-			<Container fluid className="px-5">
+			<Container>
 				{loading && (
 					<p className="col-12 text-center mt-5">Chargement des données...</p>
 				)}
 				{data.length > 0 ? (
-					<Row className="m-4">{tagbutton}</Row>
+					<Row className="m-5 g-3">{tagbutton}</Row>
 				) : (
 					!loading && (
 						<p className="col-12 text-center mt-5">Aucun tag trouvé.</p>
