@@ -8,6 +8,8 @@ const TypesScreen = () => {
 	const [types, setTypes] = useState([]);
 	const [pokemons, setPokemons] = useState([]);
 	const [loading, setLoading] = useState(true);
+  const [selectedType, setSelectedType] = useState(null); // n'affiche pas au refresh le message "pkmn non trouvé"
+  const [activeId, setActiveId] = useState(null);
 
   useEffect(() => {
 		const fetchTypes = async () => {
@@ -18,7 +20,7 @@ const TypesScreen = () => {
 					throw new Error("Erreur de réseau");
 				}
 				const result = await response.json();
-        console.log(result);
+        // console.log(result);
 				setTypes(result || []);
 			} catch (error) {
 				console.log("Fetch error:", error);
@@ -31,17 +33,17 @@ const TypesScreen = () => {
 	}, []);
 
 const fetchPokemonsByType = async (typeId) => {
-	console.log(`Fetching pokemons for typeId: ${typeId}`);
+	// console.log(`Fetching pokemons for typeId: ${typeId}`);
 	try {
-		setLoading(true);
+    setLoading(true);
 		const url = `http://pokedexapi-sam.loc/types/${typeId}`;
-		console.log(`URL: ${url}`);
+		// console.log(`URL: ${url}`);
 		const response = await fetch(url);
 		if (!response.ok) {
 			throw new Error("Erreur de réseau");
 		}
 		const result = await response.json();
-		console.log("Fetched result:", result);
+		// console.log("Fetched result:", result);
 		setPokemons(result || []);
 	} catch (error) {
 		console.log("Fetch error:", error);
@@ -51,7 +53,9 @@ const fetchPokemonsByType = async (typeId) => {
 };
 
 	const handleTypeClick = (typeId) => {
-    console.log(`Type clicked: ${typeId}`);
+    // console.log(`Type clicked: ${typeId}`);
+    setActiveId(typeId); // voir le btn actif
+    setSelectedType(typeId); // n'affiche pas au refresh le message "pkmn non trouvé"
 		fetchPokemonsByType(typeId);
 	};
 
@@ -61,6 +65,7 @@ const fetchPokemonsByType = async (typeId) => {
 				types={type}
 				name={type.name}
 				onClick={() => handleTypeClick(type.Id_types)}
+        isActive={type.Id_types === activeId}
 			/>
 		</Col>
 	));
@@ -104,7 +109,7 @@ const fetchPokemonsByType = async (typeId) => {
 				{!loading && cardDescription.length > 0 ? (
 					<Row className="mt-5 justify-content-center">{cardDescription}</Row>
 				) : (
-					!loading && (
+					!loading && selectedType && (
 						<p className="col-12 text-center mt-5">
 							Aucun Pokémon trouvé pour ce type.
 						</p>
