@@ -54,7 +54,7 @@ class BaseRepository
   }
   private function getTableName(): string
   {
-    return lcfirst($this->getBaseClassName());
+    return lcfirst($this->getBaseClassName()); // default pour tous les autres repositories
   }
   private function getEntityClassName(): string
   {

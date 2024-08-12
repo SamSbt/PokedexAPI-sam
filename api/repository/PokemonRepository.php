@@ -6,7 +6,7 @@ use PDO;
 
 class PokemonRepository extends BaseRepository
 {
-  protected function getBaseSelectQuery(): string
+    protected function getBaseSelectQuery(): string
     {
         return "
             SELECT p.*, GROUP_CONCAT(t.name) AS types

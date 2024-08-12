@@ -14,7 +14,7 @@
 }
 
 // placeholder
-input::placeholder {
+textarea::placeholder, input::placeholder {
 	font-family: "Poppins", sans-serif;
 	font-weight: 300;
 	font-size: 0.8rem;
