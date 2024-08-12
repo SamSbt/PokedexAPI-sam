@@ -1,8 +1,9 @@
 import { Col, Container, Row } from "react-bootstrap";
 import Tag from "../components/tag/tag";
-import Cards from "../components/cards/cards";
+
 
 import { useEffect, useState } from "react";
+import Cards from "../components/cards/cards";
 
 const TypesScreen = () => {
 	const [types, setTypes] = useState([]);
