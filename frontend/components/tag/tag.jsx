@@ -2,13 +2,14 @@ import PropTypes from "prop-types";
 import { Button, Row } from "react-bootstrap";
 import "./tag.scss";
 
-function Tag({ types }) {
+function Tag({ types, onClick }) {
 	const typeClass = `type-${types.Id_types}`;
 
 	return (
 		<>
 			<Row className="justify-content-center text-center btnStyle">
-				<Button className={`mx-3 px-0 text-black btn ${typeClass}`}>{types.name}</Button>
+				<Button className={`mx-3 px-0 text-black btn ${typeClass}`}
+				onClick={onClick}>{types.name}</Button>
 			</Row>
 		</>
 	);

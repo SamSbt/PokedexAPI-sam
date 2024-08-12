@@ -82,7 +82,7 @@ const fetchPokemonsByType = async (typeId) => {
 				name={pokemon.name}
 				id={pokemon.Id_pokemon}
 				imageSrc={pokemon.img_src}
-				Types={pokemon.types || []}
+				types={pokemon.types ? pokemon.types.split(',') : []}
 				showSound={false}
 				showHeight={false}
 				showWeight={false}
