@@ -16,7 +16,7 @@ const Homepage = () => {
 					throw new Error("Erreur de réseau");
 				}
 				const result = await response.json();
-				// console.log("API response:", result);
+				// console.log("réponse API:", result);
 				const lastCreatedPokemons = result
 					.sort((a, b) => {
 						return new Date(b.created_at) - new Date(a.created_at);
@@ -48,6 +48,7 @@ const Homepage = () => {
 			<Cards
 				pokemon={pokemon}
 				to={`/pokemon/${pokemon.Id_pokemon}`}
+				size="default"
 				name={pokemon.name}
 				id={pokemon.Id_pokemon}
 				imageSrc={pokemon.img_src}

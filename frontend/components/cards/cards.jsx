@@ -18,9 +18,8 @@ function Cards(props) {
 		showStatus = true,
 		showCreatedAt = true,
 		showUpdatedAt = true,
+		size = "default",
 	} = props;
-
-
 
 	// convertir types en tableau si ce n'en est pas déjà un
 	const typesArray = Array.isArray(types)
@@ -34,8 +33,8 @@ function Cards(props) {
 			<Card
 				as={Link}
 				to={props.to}
-				className="text-decoration-none mb-4 cardStyle bg-dark text-light"
-				style={{ width: "15rem" }}
+				className={`text-decoration-none mb-4 cardStyle bg-dark text-light ${size}`}
+				style={{ width: size === "large" ? "50rem" : "15rem" }}
 			>
 				<div className="d-flex justify-content-center m-3">
 					<Card.Img
@@ -54,8 +53,8 @@ function Cards(props) {
 					{showSummary && (
 						<Card.Text>Description : {pokemon.summary}</Card.Text>
 					)}
-					{showHeight && <Card.Text>Taille : {pokemon.height}</Card.Text>}
-					{showWeight && <Card.Text>Poids : {pokemon.weight}</Card.Text>}
+					{showHeight && <Card.Text>Taille : {pokemon.height} cm</Card.Text>}
+					{showWeight && <Card.Text>Poids : {pokemon.weight} kg</Card.Text>}
 					{showTypes && (
 						<Card.Text>Type(s) : {typesArray.join(", ")}</Card.Text>
 					)}
@@ -63,10 +62,10 @@ function Cards(props) {
 						<Card.Text>{pokemon.is_deleted ? "Deleted" : "Active"}</Card.Text>
 					)}
 					{showCreatedAt && (
-						<Card.Text>Création du {pokemon.created_at}</Card.Text>
+						<Card.Text>Créé le : {pokemon.created_at}</Card.Text>
 					)}
 					{showUpdatedAt && (
-						<Card.Text>Mis à jour le {pokemon.updated_at}</Card.Text>
+						<Card.Text>Mis à jour le : {pokemon.updated_at}</Card.Text>
 					)}
 				</Card.Body>
 			</Card>
@@ -99,6 +98,7 @@ Cards.propTypes = {
 	showStatus: PropTypes.bool,
 	showCreatedAt: PropTypes.bool,
 	showUpdatedAt: PropTypes.bool,
+	size: PropTypes.oneOf(["default", "large"]),
 };
 
 export default Cards;

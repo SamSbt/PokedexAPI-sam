@@ -1,7 +1,6 @@
 import { Col, Container, Row } from "react-bootstrap";
 import Tag from "../components/tag/tag";
 
-
 import { useEffect, useState } from "react";
 import Cards from "../components/cards/cards";
 
@@ -9,8 +8,8 @@ const TypesScreen = () => {
 	const [types, setTypes] = useState([]);
 	const [pokemons, setPokemons] = useState([]);
 	const [loading, setLoading] = useState(true);
-  const [selectedType, setSelectedType] = useState(null); // n'affiche pas au refresh le message "pkmn non trouvé"
-  const [activeId, setActiveId] = useState(null);
+  const [selectedType, setSelectedType] = useState(null); // pr ne pas afficher au refresh le message "pkmn non trouvé"
+  const [activeId, setActiveId] = useState(null); // border quand actif
 
   useEffect(() => {
 		const fetchTypes = async () => {
@@ -34,7 +33,7 @@ const TypesScreen = () => {
 	}, []);
 
 const fetchPokemonsByType = async (typeId) => {
-	// console.log(`Fetching pokemons for typeId: ${typeId}`);
+	// console.log(`Recherche Id_types n°: ${typeId}`);
 	try {
     setLoading(true);
 		const url = `http://pokedexapi-sam.loc/types/${typeId}`;
@@ -44,7 +43,7 @@ const fetchPokemonsByType = async (typeId) => {
 			throw new Error("Erreur de réseau");
 		}
 		const result = await response.json();
-		// console.log("Fetched result:", result);
+		// console.log("Résultat(s) trouvé(s):", result);
 		setPokemons(result || []);
 	} catch (error) {
 		console.log("Fetch error:", error);
@@ -54,9 +53,9 @@ const fetchPokemonsByType = async (typeId) => {
 };
 
 	const handleTypeClick = (typeId) => {
-    // console.log(`Type clicked: ${typeId}`);
-    setActiveId(typeId); // voir le btn actif
-    setSelectedType(typeId); // n'affiche pas au refresh le message "pkmn non trouvé"
+		// console.log(`Clic sur le type : ${typeId}`);
+		setActiveId(typeId); // voir le btn actif
+		setSelectedType(typeId); // pr ne pas afficher au refresh le message "pkmn non trouvé"
 		fetchPokemonsByType(typeId);
 	};
 

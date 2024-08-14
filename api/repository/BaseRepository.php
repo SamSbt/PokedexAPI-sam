@@ -56,7 +56,7 @@ class BaseRepository
   {
     return lcfirst($this->getBaseClassName()); // default pour tous les autres repositories
   }
-  private function getEntityClassName(): string
+  protected function getEntityClassName(): string
   {
     return "Entity\\" . $this->getBaseClassName();
   }
@@ -80,7 +80,8 @@ protected function getBaseSelectQuery(): string
   // BaseEntity | null PHP8+ ou ?BaseEntity (PHP 7.1+) - l'un ou l'autre, only dans le cas ou p ê null
   public function getOneById($id): BaseEntity | null
   {
-    $sql = $this->getBaseSelectQuery() . " WHERE id_{$this->getTableName()} = ?";
+    $sql = $this->getBaseSelectQuery() . " WHERE Id_{$this->getTableName()} = ?";
+    // var_dump($sql);
     $queryResponse = $this->preparedQuery($sql, [$id]);
     $assocArray = $queryResponse->statement->fetch(PDO::FETCH_ASSOC);
     if (!$assocArray) {

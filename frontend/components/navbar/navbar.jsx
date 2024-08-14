@@ -72,6 +72,7 @@ function NavbarTop() {
 							<input
 								className="form-control me-2"
 								type="search"
+								name="inputsearch"
 								placeholder="Rechercher un pokémon"
 								aria-label="Search"
 							/>
