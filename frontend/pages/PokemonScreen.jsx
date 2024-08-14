@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import Cards from "../components/cards/cards";
 import { useEffect, useState } from "react";
 
 const PokemonScreen = () => {
-	const { id } = useParams(); // pr récupérer l'id depuis l'url
+	const { id } = useParams(); // pr récupérer l'id depuis l'url avec react router
 	const [data, setData] = useState(null);
 	const [loading, setLoading] = useState(true);
 
@@ -29,13 +29,24 @@ const PokemonScreen = () => {
 		fetchData();
 	}, [id]);
 
+// fonctions des boutons
+const handleEdit = () => {
+	console.log("Vous voulez modifier la carte.");
+};
+
+const handleDelete = () => {
+	console.log("Vous voulez supprimer la carte.");
+};
+
+
+
 	return (
 		<>
 			<Container fluid className="px-5">
 				{loading ? (
 					<p className="col-12 text-center mt-5">Chargement des données...</p>
 				) : data ? (
-					<Row className="mt-5 justify-content-center imgSizeView">
+					<Row className="mt-5 justify-content-center">
 						<Col
 							xs={12}
 							sm={6}
@@ -43,11 +54,11 @@ const PokemonScreen = () => {
 							lg={3}
 							xl={3}
 							xxl={2}
-							className="d-flex justify-content-evenly w-100"
+							className="d-flex flex-column align-items-center w-100"
 						>
 							<Cards
 								pokemon={data}
-                size="large"
+								size="large"
 								name={data.name}
 								id={data.Id_pokemon}
 								imageSrc={data.img_src}
@@ -59,8 +70,21 @@ const PokemonScreen = () => {
 								showStatus={false}
 								createdAt={data.created_at}
 								updatedAt={data.updated_at}
-								
 							/>
+							<Row>
+								<Button
+									className="m-2 btn btn-outline-light bg-dark"
+									onClick={handleEdit}
+								>
+									Modifier
+								</Button>
+								<Button
+									className="m-2 btn btn-outline-light bg-dark"
+									onClick={handleDelete}
+								>
+									Supprimer
+								</Button>
+							</Row>
 						</Col>
 					</Row>
 				) : (

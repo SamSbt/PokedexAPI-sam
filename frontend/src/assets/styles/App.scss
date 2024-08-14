@@ -14,9 +14,26 @@
 }
 
 // placeholder
-textarea::placeholder, input::placeholder {
+textarea::placeholder,
+input::placeholder,
+select {
 	font-family: "Poppins", sans-serif;
 	font-weight: 300;
 	font-size: 0.8rem;
 	color: #fff;
+}
+
+// Create form
+// size du form
+.createFormStyle {
+	width: 600px;
+	form {
+		max-width: 600px;
+	}
+}
+// style select du form
+select.form-control {
+	font-family: "Poppins", sans-serif;
+	font-weight: 300;
+	font-size: 0.8rem;
 }

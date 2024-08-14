@@ -4,7 +4,7 @@ const Header = () => {
 	return (
 		<>
 			<Container fluid className="px-5">
-				<div className="mt-5 d-flex flex-column justify-content-center align-items-center w-100">
+				<div className="mt-5 mb-1 d-flex flex-column justify-content-center align-items-center w-100">
 					<Image
 						alt="Image du pokedex"
 						src="/src/assets/img/pokedexlogo.png"

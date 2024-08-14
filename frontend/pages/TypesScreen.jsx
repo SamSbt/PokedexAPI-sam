@@ -102,7 +102,7 @@ const fetchPokemonsByType = async (typeId) => {
 	return (
 		<>
 			<Container>
-				<Row className="m-5 g-3">{tagButton}</Row>
+				<Row className="mx-5 my-3 g-3">{tagButton}</Row>
 				{loading && (
 					<p className="col-12 text-center mt-5">Chargement des données...</p>
 				)}
