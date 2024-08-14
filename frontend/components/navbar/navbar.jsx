@@ -6,21 +6,18 @@ import {
 	Nav,
 	Navbar,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import "./navbar.scss";
 
 function NavbarTop() {
-	const [activeLink, setActiveLink] = useState("/");
+	const location = useLocation();
+	const [activeLink, setActiveLink] = useState(location.pathname);
 
-	const handleNavLinkClick = (e) => {
-		// e.preventDefault();
-		// console.log("href=" + e.target.href);
-		const url = new URL(e.target.href);
-		// console.log("path=" + url.pathname);
-		setActiveLink(url.pathname);
-	};
+	useEffect(() => {
+		setActiveLink(location.pathname);
+	}, [location]);
 
 	return (
 		<>
@@ -46,7 +43,7 @@ function NavbarTop() {
 								className={"me-2" + (activeLink == "/" ? " active" : "")}
 								as={Link}
 								to="/"
-								onClick={handleNavLinkClick}
+								
 							>
 								Accueil
 							</Nav.Link>
@@ -54,7 +51,7 @@ function NavbarTop() {
 								className={"me-2" + (activeLink == "/create" ? " active" : "")}
 								as={Link}
 								to="/create"
-								onClick={handleNavLinkClick}
+								
 							>
 								Création
 							</Nav.Link>
@@ -62,7 +59,7 @@ function NavbarTop() {
 								className={"me-2" + (activeLink == "/types" ? " active" : "")}
 								as={Link}
 								to="/types"
-								onClick={handleNavLinkClick}
+								
 							>
 								Types
 							</Nav.Link>
