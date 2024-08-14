@@ -35,7 +35,7 @@ const PokemonScreen = () => {
 				{loading ? (
 					<p className="col-12 text-center mt-5">Chargement des données...</p>
 				) : data ? (
-					<Row className="mt-5 justify-content-center">
+					<Row className="mt-5 justify-content-center imgSizeView">
 						<Col
 							xs={12}
 							sm={6}

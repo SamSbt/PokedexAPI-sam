@@ -34,7 +34,7 @@ function Cards(props) {
 				as={Link}
 				to={props.to}
 				className={`text-decoration-none mb-4 cardStyle bg-dark text-light ${size}`}
-				style={{ width: size === "large" ? "50rem" : "15rem" }}
+				style={{ width: size === "large" ? "40rem" : "15rem" }}
 			>
 				<div className="d-flex justify-content-center m-3">
 					<Card.Img
@@ -53,7 +53,7 @@ function Cards(props) {
 					{showSummary && (
 						<Card.Text>Description : {pokemon.summary}</Card.Text>
 					)}
-					{showHeight && <Card.Text>Taille : {pokemon.height} cm</Card.Text>}
+					{showHeight && <Card.Text>Taille : {pokemon.height} m</Card.Text>}
 					{showWeight && <Card.Text>Poids : {pokemon.weight} kg</Card.Text>}
 					{showTypes && (
 						<Card.Text>Type(s) : {typesArray.join(", ")}</Card.Text>

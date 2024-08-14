@@ -16,7 +16,10 @@ class BaseEntity
       // vérifie si la propriété existe dans la classe
       if (property_exists($this, $k)) {
         $this->{$k} = $v;
-      }
+      // } else {
+      //   // Pour déboguer, si la propriété n'existe pas
+      //   echo "Propriété manquante : $k\n";
     }
   }
+}
 }

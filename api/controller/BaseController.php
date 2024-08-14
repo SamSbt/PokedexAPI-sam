@@ -19,6 +19,7 @@ class BaseController
   public function execute(): string
   {
     $result = $this->{$this->method}();
+    // var_dump($result);
     return json_encode($result);
   }
   private function getBaseClassName(): string
