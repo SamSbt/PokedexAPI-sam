@@ -1,5 +1,4 @@
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import Contact from "../contact/contact";
 import { useState } from "react";
 
@@ -20,24 +19,44 @@ function Footer() {
 								<Col md={6} className="text-center">
 									<ul className="list-inline mb-0 mt-2">
 										<li className="list-inline-item">
-											<Link href="#" className="text-light">
+											<a
+												href="https://www.facebook.com/PokemonOfficielFR/?brand_redir=230809307041021&locale=fr_FR"
+												className="text-light"
+												target="_blank"
+												rel="noopener noreferrer"
+											>
 												<i className="bi bi-facebook"></i>
-											</Link>
+											</a>
 										</li>
 										<li className="list-inline-item">
-											<Link href="#" className="text-light">
-												<i className="bi bi-twitter"></i>
-											</Link>
+											<a
+												href="https://x.com/pokemonfr?lang=fr"
+												className="text-light"
+												target="_blank"
+												rel="noopener noreferrer"
+											>
+												<i className="bi bi-twitter-x"></i>
+											</a>
 										</li>
 										<li className="list-inline-item">
-											<Link href="#" className="text-light">
+											<a
+												href="https://www.instagram.com/pokemon.fra/"
+												className="text-light"
+												target="_blank"
+												rel="noopener noreferrer"
+											>
 												<i className="bi bi-instagram"></i>
-											</Link>
+											</a>
 										</li>
 										<li className="list-inline-item">
-											<Link href="#" className="text-light">
+											<a
+												href="https://www.linkedin.com/company/pokemon/"
+												className="text-light"
+												target="_blank"
+												rel="noopener noreferrer"
+											>
 												<i className="bi bi-linkedin"></i>
-											</Link>
+											</a>
 										</li>
 									</ul>
 								</Col>

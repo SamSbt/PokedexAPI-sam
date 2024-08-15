@@ -44,7 +44,7 @@ function Cards(props) {
 					/>
 				</div>
 				<Card.Body>
-					<Card.Title>Nom : {pokemon.name}</Card.Title>
+					<Card.Title><span className="fs-6">Nom : </span>{pokemon.name}</Card.Title>
 					<Card.Subtitle className="mb-3 text-light poppins-light">
 						Id: {pokemon.Id_pokemon}
 					</Card.Subtitle>
