@@ -35,10 +35,10 @@ const Homepage = () => {
 		fetchData();
 	}, []);
 
-	// récupèrer search results via navigate state
+	// récupèrer search results via navigate state (flou, à revoir)
 	const filteredPokemon = location.state?.filteredPokemon || [];
 
-	// Si des résultats filtrés sont présents, on les affiche, sinon on affiche les Pokémon récents
+	// si besoin affichage results search bar ici, si aucun = homepage normale
 	const cardDescription = (
 		filteredPokemon.length > 0 ? filteredPokemon : data
 	).map((pokemon) => (

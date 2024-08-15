@@ -73,6 +73,7 @@ useEffect(() => {
 							<Form.Control
 								type="text"
 								name="name"
+								autocomplete="name"
 								value={formData.name}
 								onChange={handleChange}
 								placeholder="Entrez le nom du Pokémon"
@@ -92,16 +93,17 @@ useEffect(() => {
 							/>
 						</Form.Group>
 
-						<Form.Group as={Row} controlId="formTypes">
-							<Form.Label className="mt-4">
-								Type(s) du Pokémon (1 ou 2 maximum) :
-							</Form.Label>
+						<Form.Group as={Row} controlId="formTypes" className="justify-content-center">
+							<div className="mt-4">
+								<p className="mb-1">Type(s) du Pokémon (1 ou 2 maximum) :</p>
+							</div>
 							<Row>
 								<Col md={6}>
 									<Form.Group controlId="formType1">
-										<Form.Label>Type 1 :</Form.Label>
+										<Form.Label htmlFor="type1">Type 1 :</Form.Label>
 										<Form.Control
 											as="select"
+											id="type1"
 											name="type1"
 											value={formData.types.type1 || ""}
 											onChange={handleSelectChange}
@@ -117,9 +119,10 @@ useEffect(() => {
 								</Col>
 								<Col md={6}>
 									<Form.Group controlId="formType2">
-										<Form.Label>Type 2 :</Form.Label>
+										<Form.Label htmlFor="type2">Type 2 :</Form.Label>
 										<Form.Control
 											as="select"
+											id="type2"
 											name="type2"
 											value={formData.types.type2 || ""}
 											onChange={handleSelectChange}
@@ -136,7 +139,7 @@ useEffect(() => {
 							</Row>
 						</Form.Group>
 
-						<Form.Group className="mt-3" controlId="formDescription">
+						<Form.Group className="mt-4" controlId="formDescription">
 							<Form.Label>Description :</Form.Label>
 							<Form.Control
 								as="textarea"

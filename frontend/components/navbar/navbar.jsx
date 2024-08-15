@@ -16,9 +16,9 @@ function NavbarTop() {
 	const location = useLocation();
   const navigate = useNavigate();
 	const [activeLink, setActiveLink] = useState(location.pathname);
-	const [searchTerm, setSearchTerm] = useState(""); // État pour l'input de recherche
-	const [pokemonList, setPokemonList] = useState([]); // État pour la liste des Pokémon
-	const [filteredPokemon, setFilteredPokemon] = useState([]); // État pour les Pokémon filtrés
+	const [searchTerm, setSearchTerm] = useState(""); // état input recherche
+	const [pokemonList, setPokemonList] = useState([]); // état pkmn list
+	const [filteredPokemon, setFilteredPokemon] = useState([]); // état pkmn filtrés
 
 	useEffect(() => {
 		setActiveLink(location.pathname);
@@ -33,7 +33,7 @@ function NavbarTop() {
 					throw new Error("Erreur de réseau");
 				}
 				const result = await response.json();
-				setPokemonList(result || []); // Stocke la liste des Pokémon
+				setPokemonList(result || []); // stocker pkmn list
 			} catch (error) {
 				console.log("Fetch error:", error);
 			}
@@ -43,22 +43,22 @@ function NavbarTop() {
 
 	const handleInputChange = (e) => {
 		const searchTerm = e.target.value;
-		setSearchTerm(searchTerm); // Met à jour l'état de la recherche
+		setSearchTerm(searchTerm); // maj état recherche
 
-		// Filtre les Pokémon en fonction du texte de recherche
+		// filtrer pkmn selon recherche
 		const filteredItems = pokemonList.filter((pokemon) =>
 			pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
 		);
 
-		setFilteredPokemon(filteredItems); // Met à jour l'état des Pokémon filtrés
+		setFilteredPokemon(filteredItems); // maj état pkmn filtrés
 	};
 
 const handleSearch = (e) => {
-	e.preventDefault(); // Empêche la soumission du formulaire
-	navigate("/", { state: { filteredPokemon } }); // Navigue vers la page d'accueil avec les résultats filtrés
+	e.preventDefault(); 
+	navigate("/", { state: { filteredPokemon } }); // affichage results filtrés sur homepage
 };
 
-	// Vérifie si le message "Aucun Pokémon trouvé" doit être affiché
+	// vérif affichage "Aucun Pokémon trouvé" ou no need
 	const noResults = searchTerm.length > 0 && filteredPokemon.length === 0;
 
 	return (
