@@ -14,20 +14,14 @@ import "./navbar.scss";
 
 function NavbarTop() {
 	const location = useLocation();
-	const navigate = useNavigate();
+  const navigate = useNavigate();
 	const [activeLink, setActiveLink] = useState(location.pathname);
-	const [searchTerm, setSearchTerm] = useState(""); // état input recherche
-	const [pokemonList, setPokemonList] = useState([]); // état pkmn list
-	const [filteredPokemon, setFilteredPokemon] = useState([]); // état pkmn filtrés
-	const [showDropdown, setShowDropdown] = useState(false); // état afficher/cacher dropdown
-	const [dropdownActive, setDropdownActive] = useState(false); // état pour gérer le focus du dropdown
+	const [searchTerm, setSearchTerm] = useState(""); // État pour l'input de recherche
+	const [pokemonList, setPokemonList] = useState([]); // État pour la liste des Pokémon
+	const [filteredPokemon, setFilteredPokemon] = useState([]); // État pour les Pokémon filtrés
 
 	useEffect(() => {
 		setActiveLink(location.pathname);
-		// réinitialisation search bar au refresh
-		setSearchTerm("");
-		setFilteredPokemon([]);
-		setShowDropdown(false);
 	}, [location]);
 
 	useEffect(() => {
@@ -39,7 +33,7 @@ function NavbarTop() {
 					throw new Error("Erreur de réseau");
 				}
 				const result = await response.json();
-				setPokemonList(result || []); // stocke pkmn list
+				setPokemonList(result || []); // Stocke la liste des Pokémon
 			} catch (error) {
 				console.log("Fetch error:", error);
 			}
@@ -49,59 +43,22 @@ function NavbarTop() {
 
 	const handleInputChange = (e) => {
 		const searchTerm = e.target.value;
-		setSearchTerm(searchTerm); // maj état recherche
+		setSearchTerm(searchTerm); // Met à jour l'état de la recherche
 
-		if (searchTerm === "") {
-			setFilteredPokemon([]); // réinitialisation liste filtrée si input vide
-			setShowDropdown(false); // hiding dropdown si input vide
-		} else {
-			// filtre pkmn selon recherche
-			const filteredItems = pokemonList.filter((pokemon) =>
-				pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
-			);
-			setFilteredPokemon(filteredItems); // maj état pkmn filtrés
-			setShowDropdown(true); // afficher dropdown
-		}
+		// Filtre les Pokémon en fonction du texte de recherche
+		const filteredItems = pokemonList.filter((pokemon) =>
+			pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
+		);
+
+		setFilteredPokemon(filteredItems); // Met à jour l'état des Pokémon filtrés
 	};
 
-	const handleSearch = (e) => {
-		e.preventDefault();
-		if (searchTerm.trim()) {
-			// filtre pkmn selon recherche
-			const filteredItems = pokemonList.filter((pokemon) =>
-				pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
-			);
-			setFilteredPokemon(filteredItems); // maj état pkmn filtrés
-			setShowDropdown(false); // hiding dropdown
+const handleSearch = (e) => {
+	e.preventDefault(); // Empêche la soumission du formulaire
+	navigate("/", { state: { filteredPokemon } }); // Navigue vers la page d'accueil avec les résultats filtrés
+};
 
-			// rediriger vers Homepage grâce aux résultats filtrés
-			navigate("/", { state: { filteredPokemon: filteredItems } });
-		} else {
-			setFilteredPokemon([]); // Réinitialisation liste filtrée si input vide
-			setShowDropdown(false); // hiding dropdown
-		}
-	};
-
-	const handleBlur = (e) => {
-		// Ajoute un léger délai pour permettre le clic sur les éléments du dropdown
-		setTimeout(() => {
-			if (!dropdownActive) {
-				setShowDropdown(false);
-			}
-		}, 200);
-	};
-	
-	const handleDropdownClick = (e) => {
-		// Prévenir que le clic sur les éléments du dropdown déclenche onBlur
-		e.preventDefault();
-		setDropdownActive(false);
-	};
-
-	const handleDropdownMouseDown = () => {
-		// Permet de garder le dropdown actif lorsqu'on clique sur ses éléments
-		setDropdownActive(true);
-	};
-
+	// Vérifie si le message "Aucun Pokémon trouvé" doit être affiché
 	const noResults = searchTerm.length > 0 && filteredPokemon.length === 0;
 
 	return (
@@ -125,21 +82,21 @@ function NavbarTop() {
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="me-auto">
 							<Nav.Link
-								className={"me-2" + (activeLink === "/" ? " active" : "")}
+								className={"me-2" + (activeLink == "/" ? " active" : "")}
 								as={Link}
 								to="/"
 							>
 								Accueil
 							</Nav.Link>
 							<Nav.Link
-								className={"me-2" + (activeLink === "/create" ? " active" : "")}
+								className={"me-2" + (activeLink == "/create" ? " active" : "")}
 								as={Link}
 								to="/create"
 							>
 								Création
 							</Nav.Link>
 							<Nav.Link
-								className={"me-2" + (activeLink === "/types" ? " active" : "")}
+								className={"me-2" + (activeLink == "/types" ? " active" : "")}
 								as={Link}
 								to="/types"
 							>
@@ -160,31 +117,21 @@ function NavbarTop() {
 								aria-label="Search"
 								value={searchTerm}
 								onChange={handleInputChange}
-								onBlur={handleBlur} // event pour cacher la liste
 							/>
-							{showDropdown && (
-								<Dropdown.Menu
-									show
-									className="position-absolute w-100 custom-dropdown-menu"
-								>
-									{filteredPokemon.length > 0 ? (
-										filteredPokemon.map((pokemon) => (
-											<Dropdown.Item
-												key={pokemon.Id_pokemon}
-												as={Link}
-												to={`/pokemon/${pokemon.Id_pokemon}`}
-												className="custom-dropdown-item"
-												onMouseDown={handleDropdownMouseDown} // Set dropdown active
-												onClick={handleDropdownClick} // Handle click on item
-											>
-												{pokemon.name}
-											</Dropdown.Item>
-										))
-									) : noResults ? (
-										<Dropdown.Item disabled>Aucun Pokémon trouvé</Dropdown.Item>
-									) : null}
-								</Dropdown.Menu>
-							)}
+							<Dropdown.Menu show className="position-absolute w-100 border-0">
+								{filteredPokemon.length > 0 ? (
+									filteredPokemon.map((pokemon) => (
+										<Dropdown.Item
+											key={pokemon.Id_pokemon}
+											href={`/pokemon/${pokemon.Id_pokemon}`}
+										>
+											{pokemon.name}
+										</Dropdown.Item>
+									))
+								) : noResults ? (
+									<Dropdown.Item disabled>Aucun Pokémon trouvé</Dropdown.Item>
+								) : null}
+							</Dropdown.Menu>
 							<Button
 								className="btn btn-outline-light bg-dark"
 								type="button"
