@@ -24,7 +24,6 @@ const TypesScreen = () => {
 				console.log("Fetch error:", error);
 			}
 		};
-
 		fetchTypes();
 	}, []);
 

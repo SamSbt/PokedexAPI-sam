@@ -1,9 +1,11 @@
 import { Container, Row, Col } from "react-bootstrap";
 import Cards from "../components/cards/cards";
+import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 
 const Homepage = () => {
+	const location = useLocation();
 	const [data, setData] = useState([]);
 	const [loading, setLoading] = useState(true);
 
@@ -30,11 +32,16 @@ const Homepage = () => {
 				setLoading(false);
 			}
 		};
-
 		fetchData();
 	}, []);
 
-	const cardDescription = data.map((pokemon) => (
+	// récupèrer search results via navigate state
+	const filteredPokemon = location.state?.filteredPokemon || [];
+
+	// Si des résultats filtrés sont présents, on les affiche, sinon on affiche les Pokémon récents
+	const cardDescription = (
+		filteredPokemon.length > 0 ? filteredPokemon : data
+	).map((pokemon) => (
 		<Col
 			xs={12}
 			sm={6}
