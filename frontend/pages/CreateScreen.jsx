@@ -108,7 +108,7 @@ useEffect(() => {
 										>
 											<option value="">Sélectionnez le type</option>
 											{allTypes.map((type) => (
-												<option key={type.id} value={type.id}>
+												<option key={type.Id_types} value={type.Id_types}>
 													{type.name}
 												</option>
 											))}
@@ -126,7 +126,7 @@ useEffect(() => {
 										>
 											<option value="">Sélectionnez le type</option>
 											{allTypes.map((type) => (
-												<option key={type.id} value={type.id}>
+												<option key={type.Id_types} value={type.Id_types}>
 													{type.name}
 												</option>
 											))}
