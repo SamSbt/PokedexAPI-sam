@@ -32,7 +32,7 @@ select {
 	}
 }
 // style select du form
-select.form-control {
+select.form-control, input.form-control, textarea.form-control {
 	font-family: "Poppins", sans-serif;
 	font-weight: 300;
 	font-size: 0.8rem;

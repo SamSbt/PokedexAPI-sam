@@ -8,17 +8,26 @@ const CreateScreen = () => {
 		description: "",
 		height: "",
 		weight: "",
-		// types: [],
+		types: [],
 	});
-	// const [allTypes, setAllTypes] = useState([]);
+	const [allTypes, setAllTypes] = useState([]);
 
-	// useEffect(() => {
-	// 	// Remplacez cette URL par celle de votre API pour récupérer les types
-	// 	fetch("http://pokedexapi-sam.loc/types")
-	// 		.then((response) => response.json())
-	// 		.then((data) => setAllTypes(data))
-	// 		.catch((error) => console.error("Error fetching types:", error));
-	// }, []);
+useEffect(() => {
+	const fetchData = async () => {
+		try {
+			const response = await fetch("http://pokedexapi-sam.loc/types");
+			if (!response.ok) {
+				throw new Error(`HTTP error! Status: ${response.status}`);
+			}
+			const data = await response.json();
+			setAllTypes(data);
+		} catch (error) {
+			console.error("Error fetching types:", error);
+		}
+	};
+
+	fetchData();
+}, []);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -28,16 +37,16 @@ const CreateScreen = () => {
 		});
 	};
 
-	// const handleSelectChange = (e) => {
-	// 	const { name, value } = e.target;
-	// 	setFormData({
-	// 		...formData,
-	// 		types: {
-	// 			...formData.types,
-	// 			[name]: value,
-	// 		},
-	// 	});
-	// };
+	const handleSelectChange = (e) => {
+		const { name, value } = e.target;
+		setFormData({
+			...formData,
+			types: {
+				...formData.types,
+				[name]: value,
+			},
+		});
+	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -54,6 +63,11 @@ const CreateScreen = () => {
 						onSubmit={handleSubmit}
 						noValidate
 					>
+						<Form.Group controlId="formFile" className="mb-3">
+							<Form.Label>Importer une photo :</Form.Label>
+							<Form.Control type="file" />
+						</Form.Group>
+
 						<Form.Group controlId="formName">
 							<Form.Label>Nom :</Form.Label>
 							<Form.Control
@@ -80,7 +94,7 @@ const CreateScreen = () => {
 
 						<Form.Group as={Row} controlId="formTypes">
 							<Form.Label className="mt-4">
-								Type(s) du Pokémon (1 à 2 maximum) :
+								Type(s) du Pokémon (1 ou 2 maximum) :
 							</Form.Label>
 							<Row>
 								<Col md={6}>
@@ -89,11 +103,15 @@ const CreateScreen = () => {
 										<Form.Control
 											as="select"
 											name="type1"
-											// value={formData.types.type1 || ""}
-											// onChange={handleSelectChange}
+											value={formData.types.type1 || ""}
+											onChange={handleSelectChange}
 										>
 											<option value="">Sélectionnez le type</option>
-											<option>name1</option>
+											{allTypes.map((type) => (
+												<option key={type.id} value={type.id}>
+													{type.name}
+												</option>
+											))}
 										</Form.Control>
 									</Form.Group>
 								</Col>
@@ -103,11 +121,15 @@ const CreateScreen = () => {
 										<Form.Control
 											as="select"
 											name="type2"
-											// value={formData.types.type2 || ""}
-											// onChange={handleSelectChange}
+											value={formData.types.type2 || ""}
+											onChange={handleSelectChange}
 										>
 											<option value="">Sélectionnez le type</option>
-											<option>name1</option>
+											{allTypes.map((type) => (
+												<option key={type.id} value={type.id}>
+													{type.name}
+												</option>
+											))}
 										</Form.Control>
 									</Form.Group>
 								</Col>
