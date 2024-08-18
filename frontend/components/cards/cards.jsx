@@ -44,7 +44,7 @@ function Cards(props) {
 					/>
 				</div>
 				<Card.Body>
-					<Card.Title><span className="fs-6">Nom : </span>{pokemon.name}</Card.Title>
+					<Card.Title>{pokemon.name}</Card.Title>
 					<Card.Subtitle className="mb-3 text-light poppins-light">
 						Id: {pokemon.Id_pokemon}
 					</Card.Subtitle>
@@ -62,10 +62,10 @@ function Cards(props) {
 						<Card.Text>{pokemon.is_deleted ? "Deleted" : "Active"}</Card.Text>
 					)}
 					{showCreatedAt && (
-						<Card.Text>Créé le : {pokemon.created_at}</Card.Text>
+						<Card.Text>Créé le {pokemon.created_at}</Card.Text>
 					)}
 					{showUpdatedAt && (
-						<Card.Text>Mis à jour le : {pokemon.updated_at}</Card.Text>
+						<Card.Text>Mis à jour le {pokemon.updated_at}</Card.Text>
 					)}
 				</Card.Body>
 			</Card>

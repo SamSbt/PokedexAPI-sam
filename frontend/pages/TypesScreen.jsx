@@ -54,7 +54,6 @@ const TypesScreen = () => {
 		<Col key={type.Id_types}>
 			<Tag
 				types={type}
-				name={type.name}
 				onClick={() => handleTypeClick(type.Id_types)}
 				isActive={type.Id_types === activeId}
 			/>

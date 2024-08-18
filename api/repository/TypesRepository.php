@@ -6,6 +6,7 @@ use PDO;
 
 class TypesRepository extends BaseRepository
 {
+  // récupère type pkmn à partir de la bdd (btn tag)
   public function getPokemonsByTypeId($typeId)
   {
     $sql = "

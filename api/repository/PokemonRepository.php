@@ -32,8 +32,9 @@ class PokemonRepository extends BaseRepository
         ";
     }
 
-    // Surcharge de la méthode getOneById dans PokemonRepository
+    // Surcharge de la méthode getOneById dans BaseRepository
     // permet de spécifier une implémentation différente de la méthode tout en gardant le même nom
+    // utilisé pour la search bar
     public function getOneById($id): BaseEntity | null
     {
         $sql = $this->getSelectQueryForOne();

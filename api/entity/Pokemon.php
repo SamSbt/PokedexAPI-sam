@@ -16,5 +16,6 @@ class Pokemon extends BaseEntity
   public ?string $updated_at;
 
   // Ajout de la propriété types pour stocker les types concaténés
+  // sert à afficher types sur pokemon/id
   public ?string $types;
 }
