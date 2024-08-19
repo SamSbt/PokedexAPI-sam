@@ -38,8 +38,6 @@ const handleDelete = () => {
 	console.log("Vous voulez supprimer la carte.");
 };
 
-
-
 	return (
 		<>
 			<Container fluid className="px-5">

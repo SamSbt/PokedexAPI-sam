@@ -54,14 +54,14 @@ class BaseRepository
   }
   private function getTableName(): string
   {
-    return lcfirst($this->getBaseClassName()); // default pour tous les autres repositories
+    return lcfirst($this->getBaseClassName());
   }
   protected function getEntityClassName(): string
   {
     return "Entity\\" . $this->getBaseClassName();
   }
 
-//surcharge des requêtes SQL dans les sous-classes
+// redéfinition des requêtes SQL dans les sous-classes
 protected function getBaseSelectQuery(): string
     {
         $tableName = $this->getTableName();
